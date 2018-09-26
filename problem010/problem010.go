@@ -25,14 +25,17 @@ func isPrime(n int) bool {
 }
 
 // primes returns a slice containing all prime numbers up to limit.
-func primes(limit int) []int {
-	ps := make([]int, 0)
-	for i := 2; i < limit; i++ {
+func primes(limit int) (ps []int) {
+	if limit < 2 {
+		return
+	}
+	ps = append(ps, 2)
+	for i := 3; i < limit; i += 2 {
 		if isPrime(i) {
 			ps = append(ps, i)
 		}
 	}
-	return ps
+	return
 }
 
 func sum(xs []int) int {
